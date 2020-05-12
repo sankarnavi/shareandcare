@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
+    <title>Share & Care </title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static "vendor/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
+<!--
+
+TemplateMo 546 Sixteen Clothing
+
+https://templatemo.com/tm-546-sixteen-clothing
+
+-->
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="{% static "assets/css/fontawesome.css" %}">
+    <link rel="stylesheet" href="{% static "assets/css/templatemo-sixteen.css" %}">
+    <link rel="stylesheet" href="{% static "assets/css/owl.css" %}">
+
+  </head>
+
+  <body>
+
+    <!-- ***** Preloader Start ***** -->
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>  
+    <!-- ***** Preloader End ***** -->
+
+    <!-- Header -->
+    <header class="">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <a class="navbar-brand" href="/"><h2>Share <em>&</em> Care</h2></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="/">Home
+                  <span class="sr-only">(current)</span>
+                </a>
+              </li> 
+              <li class="nav-item active">
+                <a class="nav-link" href=" ">Things</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/#bottom">About Us</a>
+              </li>
+              <li class="nav-item">
+                <div class="btn-group">
+  <button type="button" class="btn btn-danger">Hey, {{ user.get_username }}</button>
+  <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="#">View Profile</a>
+     <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="/accounts/logout/">Logout</a>
+  </div>
+</div>
+                
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Page Content -->
+    <div class="page-heading products-heading header-text">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="text-content">
+              <h4>Share <em>&</em>Care</h4>
+              <h2>All Products</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="products">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="filters">
+              <ul>
+                  <li class="active" data-filter="*">All Products</li>
+                  <li data-filter=".Food">Food</li>
+                  <li data-filter=".Clothes">Clothes</li>
+                  <li data-filter=".Others">Others</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-12">
+                <div class="row grid">
+                {% for i in x %}
+                    <div class="col-lg-4 col-md-4 all {{ i.category}}">
+                      <div class="product-item">
+                        <a href={{ i.get_absolute_url }}><img src="{{ i.img.url }}" alt="" ></a>
+              <div class="down-content">
+                <a href={{ i.get_absolute_url }}><h4>{{ i.name|title }}</h4></a>
+                <h6>{{ i.get_category_display }}</h6>
+                <p>
+                  {{ i.Editor1.user }}
+                </p>
+                <p> Posted on: {{ i.postedon| timesince }} ago</p>
+                <span>Expiry : {{ i.expiry |timeuntil }} more</span>
+                        </div>
+                      </div>
+                    </div>
+                    {% endfor %}
+           <!-- Up is the product Content -->
+                </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <ul class="pages">
+              {% if x.has_previous %}
+            <li><a href="?{{ page_request_var }}={{ x.previous_page_number }}"><i class="fa fa-angle-double-left"></i></a></li>
+            {% endif %}
+               {% if x.has_previous %}
+<li><a href="?{{ page_request_var }}={{ x.previous_page_number }}">{{ x.previous_page_number }}</a></li>
+               {% endif %}
+               
+              <li class="active"><a href="?{{ page_request_var }}={{ x.number }}">{{ x.number }}</a></li>
+                  {% if x.has_next %}
+<li><a href="?{{ page_request_var }}={{ x.next_page_number }}">{{ x.next_page_number }}</a></li> 
+               {% endif %}
+              {% if x.has_next %}
+             <li><a href="?{{ page_request_var }}={{ x.next_page_number }}"><i class="fa fa-angle-double-right"></i></a></li>
+            {% endif %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="inner-content">
+              <p>Copyright &copy; 2020 Share <em> & </em> Care Co., Ltd.
+            
+            - Design: <a rel="nofollow noopener" href="https://templatemo.com" target="_blank">TemplateMo</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src={% static "vendor/jquery/jquery.min.js" %}></script>
+    <script src={% static "vendor/bootstrap/js/bootstrap.bundle.min.js" %}></script>
+
+
+    <!-- Additional Scripts -->
+    <script src={% static "assets/js/custom.js" %}></script>
+    <script src={% static "assets/js/owl.js" %}></script>
+    <script src={% static "assets/js/slick.js" %}></script>
+    <script src={% static "assets/js/isotope.js" %}></script>
+    <script src={% static "assets/js/accordions.js" %}></script>
+
+
+    <script language = "text/Javascript"> 
+      cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
+      function clearField(t){                   //declaring the array outside of the
+      if(! cleared[t.id]){                      // function makes it static and global
+          cleared[t.id] = 1;  // you could use true and false, but that's more typing
+          t.value='';         // with more chance of typos
+          t.style.color='#fff';
+          }
+      }
+    </script>
+
+
+  </body>
+
+</html>

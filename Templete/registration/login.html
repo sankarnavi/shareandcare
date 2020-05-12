@@ -1,0 +1,30 @@
+
+{% extends 'baselogin.html' %} 
+{% block content %}
+
+{% load static %}
+    <div class="login-box">
+      <img src="{% static "/assets/images/logo.png" %}" class="avatar" alt="Avatar Image">
+      <h1>Login Here</h1>
+      <form method ="POST">
+      {% csrf_token %}
+        <!-- USERNAME INPUT -->
+        <label for="username">Username</label>
+         {{ form.username }}
+         {{ form.username.error }}
+        <!-- PASSWORD INPUT -->
+        <label for="password">Password</label>
+        {{ form.password }}
+        {{ form.password.error }}
+
+        <input type="submit"/>
+        
+        <a href="#">Lost your Password?</a><br>
+        <a href="accounts/logout/">Don't have An account?</a>
+        {% if form.errors %}
+      <p>Please enter a correct username and password. Note that both fields may be case-sensitive.</p>
+      {% endif %}
+      </form>
+
+      </div>
+   {% endblock %}

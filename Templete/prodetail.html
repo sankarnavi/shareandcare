@@ -1,0 +1,69 @@
+{% extends 'base.html' %} {% block content %}
+<main class="container1">
+ 
+  <!-- Left Column / Headphones Image -->
+  <div class="left-column1">
+    <img data-image="black" src="{{ y.img.url }}" alt="">
+  
+  </div>
+ 
+  <!-- Right Column -->
+  
+  <div class="right-column1">
+ 
+    <!-- Product Description -->
+    <div class="product-description1">
+      <span>{{ y.category }}</span>
+      <h1>{{ y.name | title }}</h1>
+      <p>{{ y.id }}</p>
+    </div>
+ 
+    <!-- Product Configuration -->
+    <div class="product-configuration1">
+ 
+      <!-- Product Color -->
+     
+ 
+      <!-- Cable Configuration -->
+      <div class="cable-config1">
+        <span>Details:</span>
+ 
+        <div class="cable-choose1">
+          <button>Posted On: {{ y.postedon | timesince }}ago</button><br>
+          <button>Expiry : {{ y.expiry | timesince }}ago</button><br>
+        </div>
+ 
+      </div>
+    </div>
+ {% if z.0.status == 1 %}
+    <!-- Product Pricing -->
+    <div class="product-price1">
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <a href="/connect/{{ y.id }}/" class="cart-btn1">Accepted,Please contact the below email: {{ z.0.Approver }}</a>
+    </div>
+     {% elif z.0.status == 0 %}
+    <!-- Product Pricing -->
+    <div class="product-price1">
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <a href="/connect/{{ y.id }}/" class="cart-btn1">Declined</a>
+    </div>
+     {% elif z.0.status == 69 %}
+    <!-- Product Pricing -->
+    <div class="product-price1">
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <a href="/connect/{{ y.id }}/" class="cart-btn1">Waiting</a>
+    </div>
+    {% else %}
+    <!-- Product Pricing -->
+    <div class="product-price1">
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <a href="/connect/{{ y.id }}/" class="cart-btn1">Connect</a>
+    </div>
+    {% endif %}
+
+  </div>
+</main>
+ 
+ <!-- end container -->
+    
+     {% endblock %}
