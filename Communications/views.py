@@ -21,7 +21,7 @@ def Contactdetails(request, id):
     res = Contact(Requester=request.user, JobtaskID=y,
                   Approver=user_email,)
     res.save()
-    return HttpResponse(res)
+    return redirect('/Products')
 
 
 @login_required

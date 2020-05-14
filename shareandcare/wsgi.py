@@ -7,7 +7,7 @@ For more information on this file, see
 https://docs.djangoproject.com/en/3.0/howto/deployment/wsgi/
 """
 
-from whitenoise.django import DjangoWhiteNoise
+from whitenoise import DjangoWhiteNoise
 import os
 
 from django.core.wsgi import get_wsgi_application
