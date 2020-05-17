@@ -27,7 +27,7 @@ SECRET_KEY = '28@sr*lj8x1f0r5x2tp@gbvy0k3p+3)#_k#l)mv+d-a0t4)l$!'
 DEBUG = False
 
 
-ALLOWED_HOSTS = ['sharesandcare.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
