@@ -7,14 +7,8 @@ For more information on this file, see
 https://docs.djangoproject.com/en/3.0/howto/deployment/wsgi/
 """
 
-from whitenoise import DjangoWhiteNoise
 import os
 
 from django.core.wsgi import get_wsgi_application
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'shareandcare.settings')
-
-application = get_wsgi_application()
-
-
-application = DjangoWhiteNoise(get_wsgi_application())

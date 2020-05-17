@@ -22,6 +22,7 @@ from shareandcare import settings
 from product import urls
 import product
 import Communications
+from django.conf.urls.static import static
 from Communications import urls
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,7 +30,3 @@ urlpatterns = [
     path('', include(product.urls)),
     path('', include(Communications.urls))
 ]
-urlpatterns = urlpatterns + \
-    static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-urlpatterns = urlpatterns + \
-    static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
