@@ -2,7 +2,7 @@
 {% extends 'baselogin.html' %} {% block content %}
 {% load static %}
     <div class="login-box">
-      <img src="{% static "/assets/images/logo.png" %}" class="avatar" alt="Avatar Image">
+      <img src="{% static "assets/images/logo.png" %}" class="avatar" alt="Avatar Image">
       <h1>Register Here</h1>
       <form method ="POST">
       {% csrf_token %}
